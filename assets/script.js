@@ -1,4 +1,4 @@
-// Start the met image random 
+// Start the met image random
 
 // Html need an image container div for the met api stuff, a button, and a div where the book stuff goes 
 
