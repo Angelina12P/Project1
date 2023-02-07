@@ -45,9 +45,6 @@ randomImage()
 
 
 
-// Then add to the container bit 
-// document.getElementById("image container div”).innerHTML = 
-//         `<img src="${image we get from above }”>
 // <plus other bits we want>
 
 // Then call it 
