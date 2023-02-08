@@ -1,0 +1,80 @@
+*{
+    border: red solid 1px;
+}
+
+body{
+    /* background-color:azure; */
+    background-image: url('/assets/images/hd-wallpaper-1074131_1920.jpg');
+    background-size:cover;
+    margin: 20px;
+    padding: auto;
+    position:absolute;
+    
+}
+
+
+header{
+    text-align: center;
+    background: white;
+}
+header h1{
+    width:auto;
+    display:flex;
+    position:relative;
+    justify-content: center;
+    align-items: center;
+    color: transparent; background-clip:text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image:url('/assets/images/newpaint.jpeg');
+    background-size:110%;
+    text-shadow: 3px 4px 7px rgba(0, 0, 0, 0.8);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 80px;
+    
+}
+
+main{
+    position:relative;
+    justify-content:space-around;
+    margin: 20px;
+    padding: auto;
+    
+}
+
+.card1{
+    width: 60%;
+    float:left;
+    display:block;
+}
+.card1 img{
+    width:100%;
+}
+
+
+#metOutput{
+    width: 60%;
+    float: left;
+    display: block;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+    background: white;
+    /* box-shadow: ;  */
+}
+
+#metOutput img{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+aside{
+    width: 30%;
+    float: right;
+    background: white;   
+    text-align: center;
+    /* box-shadow:  */
+}
