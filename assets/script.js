@@ -36,6 +36,8 @@ function randomImage(){
       })})}
 randomImage()
 
+
+
 // Then use these, and pick what we want to show from these 
 
 // objectID ---> int Identifying number for each artwork (unique, can be used as key field)
