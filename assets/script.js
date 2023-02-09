@@ -15,12 +15,13 @@ function randomImage(){
   fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects")
   .then(response => response.json())
   .then(data => {
-    let art = data.objectIDs;
+    let art = data.objectIDs;  
     let randomArt = art[Math.floor(Math.random() * art.length)];
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomArt}`)
       .then(response => response.json())
       .then(artData => {
         console.log(artData)
+
           let objectURL = artData.objectURL ;
           let metImage = artData.primaryImage;
           metTitle = artData.title ;
@@ -32,6 +33,7 @@ function randomImage(){
 
            renderMetOutput(metImage, metArtistName, metCulture, metDate, metCountry, metTitle)
           })})}
+
 randomImage()
 
 function renderMetOutput( metImage = `https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG`, metArtistName, metCulture, metDate , metCountry , metTitle ){
