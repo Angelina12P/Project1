@@ -75,7 +75,7 @@ header h3{
     background-color: #612111;
     border-color: #6e1d04;
     position: relative;
-    margin-left:280px;
+    margin-left:36%;
     width: 200px;
 }
 
@@ -88,7 +88,7 @@ header h3{
 
 .card-title {
     margin-bottom: .75rem;
-    margin-left: 120px;
+    margin-left: 35%;
     color: #2c0f09;
     font-size: 25px;
 }
@@ -108,3 +108,4 @@ footer i{
     font-size:30px;
     color:rgb(54, 8, 8,0.6);
 }
+
