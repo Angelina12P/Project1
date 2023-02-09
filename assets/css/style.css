@@ -60,6 +60,16 @@ header h3{
     text-shadow: 2px;
 }
 
+.metOutputDiv a:link{
+    color: rgb(102, 39, 24);
+    border-bottom: 2px solid;
+    text-decoration: none;
+}
+
+.metOutputDiv a:hover{
+    background-color: #b88a7d;
+}
+
 .buttonStyle{
     color: #fff;
     background-color: #612111;
