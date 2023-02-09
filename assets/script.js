@@ -4,7 +4,8 @@
 
 // function that runs when page loads "init" - checks settings then calls function to startapp ()metCulture || metCountry || metArtistName || metDate || metTitle
 
-let metOutputResult = document.getElementById("metOutput")
+let metOutputResult = document.getElementById("metOutput");
+let searchButton = document.getElementById("searchButton");
 var metTitle = ""
 var metCulture = ""
 var metCountry = ""
@@ -31,9 +32,9 @@ function randomImage(){
           console.log(metArtistName)
           metDate = artData.objectDate ;
           metCountry = artData.country;
-          objectURL = artData.objectURL;
+          objectURL = artData.objectURL;          ;
 
-           renderMetOutput(metImage, metArtistName, metCulture, metDate, metCountry, metTitle)
+           renderMetOutput(metImage, metArtistName, metCulture, metDate, metCountry, metTitle,objectURL)
           })})}
 
 randomImage()
@@ -87,10 +88,10 @@ console.log(queryTerm)
   
   
   bookOutput.innerHTML = 
-`<div>
+`<div class="bookOutputDiv">
 <h2> Title - ${bookTitle}</h2> 
 <p> Author - ${bookAuthor}</p>
-<img src="${bookImage}" onerror="this.onerror=null;this.src='https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG';"
+<img src="${bookImage}" class="rounded mx-auto d-block" onerror="this.onerror=null;this.src='https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG';"
 </div>`;
 console.log(bookImage)
 })
