@@ -22,8 +22,8 @@ function randomImage(){
         let metDate = artData.objectDate || "unknown date";
         let metCountry = artData.country || "unknown country";
         metOutputResult.innerHTML =
-       `<div>
-       <img src="${metImage}" /> 
+       `<div class="metOutputDiv">
+       <img src="${metImage}" class="rounded mx-auto d-block" /> 
        <h2> Title - ${metTitle}</h2> 
        <p> Artist Name - ${metArtistName}</p> 
        <p>Culture - ${metCulture} </p>
