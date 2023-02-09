@@ -1,7 +1,15 @@
 // Start the met image random
+// onLoad check local storage for user preference object, then if object exists, use that, if not use default. 
+// light/dark mode checkbox. function writes change to local storage user setting = dark.light 
 
-// Html need an image container div for the met api stuff, a button, and a div where the book stuff goes 
+// function that runs when page loads "init" - checks settings then calls function to startapp ()metCulture || metCountry || metArtistName || metDate || metTitle
+
 let metOutputResult = document.getElementById("metOutput")
+var metTitle = ""
+var metCulture = ""
+var metCountry = ""
+var metDate = ""
+var metArtistName = ""
 
 function randomImage(){
   fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects")
@@ -13,28 +21,77 @@ function randomImage(){
       .then(response => response.json())
       .then(artData => {
         console.log(artData)
-        let objectURL = artData.objectURL;
-        let metImage = artData.primaryImage || "click the link to see the art  "+objectURL;
-        let metTitle = artData.title || "unknown title";
-        let metCulture = artData.culture || "unknown culture";
-        let metArtistName = artData.artistDisplayName || "unknown artist";
-        console.log(metArtistName)
-        let metDate = artData.objectDate || "unknown date";
-        let metCountry = artData.country || "unknown country";
-        metOutputResult.innerHTML =
-       `<div>
-       <img src="${metImage}" /> 
-       <h2> Title - ${metTitle}</h2> 
-       <p> Artist Name - ${metArtistName}</p> 
-       <p>Culture - ${metCulture} </p>
-       <p>Date - ${metDate} </p>
-       <p>Country - ${metCountry}</p>
-       </div>`
-         
-      
-      
-      })})}
+          let objectURL = artData.objectURL ;
+          let metImage = artData.primaryImage;
+          metTitle = artData.title ;
+          metCulture = artData.culture ;
+          metArtistName = artData.artistDisplayName;
+          console.log(metArtistName)
+          metDate = artData.objectDate ;
+          metCountry = artData.country;
+
+           renderMetOutput(metImage, metArtistName, metCulture, metDate, metCountry, metTitle)
+          })})}
 randomImage()
+
+function renderMetOutput( metImage = `https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG`, metArtistName, metCulture, metDate , metCountry , metTitle ){
+  metOutputResult.innerHTML =
+  `<div>
+  <img src="${metImage}" /> 
+  <h2> Title - ${metTitle || "unknown title"}</h2> 
+  <p> Artist Name - ${metArtistName || "unknown artist"}</p> 
+  <p>Culture - ${metCulture || "unknown culture"} </p>
+  <p>Date - ${metDate || "unknown date"} </p>
+  <p>Country - ${metCountry || " unknown country "}</p>
+  </div>`
+}
+
+
+
+
+let button = document.getElementById('searchButton')
+button.addEventListener('click', function(){
+let  queryTerm = metCulture || metCountry || metArtistName || metDate || metTitle;
+  // let metTitle = document.querySelector('#metOutputResult h2');
+console.log(metTitle)
+console.log(queryTerm)
+
+  fetch (`https://openlibrary.org/search.json?q=${queryTerm}`)
+  .then (response => response.json())
+  .then (bookData => {
+  console.log(bookData)
+  let isThereData = bookData.docs[0];
+  if (!isThereData){
+    bookOutput.innerHTML = "Hmm, no book data for this one, please try again" 
+  }
+  let bookTitle = "None Found"
+  if (bookData.docs[0]?.title ){
+    bookTitle = bookData.docs[0].title
+  }
+  console.log(bookTitle)
+  let bookAuthor = bookData.docs[0]?.author_name 
+  let bookID = bookData.docs[0]?.isbn?.[1] || "None Found"
+  // console.log(bookID)
+
+  let bookImage = `https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG`;
+  if (bookID !== "None Found"){
+    bookImage = `https://covers.openlibrary.org/b/olid/${bookID}-M.jpg?default=false`
+  }
+
+  
+  
+  
+  bookOutput.innerHTML = 
+`<div>
+<h2> Title - ${bookTitle}</h2> 
+<p> Author - ${bookAuthor}</p>
+<img src="${bookImage}" onerror="this.onerror=null;this.src='https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG';"
+</div>`;
+console.log(bookImage)
+})
+
+
+})
 
 
 
