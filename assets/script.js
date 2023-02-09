@@ -10,6 +10,7 @@ var metCulture = ""
 var metCountry = ""
 var metDate = ""
 var metArtistName = ""
+var objectURL = ""
 
 function randomImage(){
   fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects")
@@ -30,21 +31,23 @@ function randomImage(){
           console.log(metArtistName)
           metDate = artData.objectDate ;
           metCountry = artData.country;
+          objectURL = artData.objectURL;
 
            renderMetOutput(metImage, metArtistName, metCulture, metDate, metCountry, metTitle)
           })})}
 
 randomImage()
 
-function renderMetOutput( metImage = `https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG`, metArtistName, metCulture, metDate , metCountry , metTitle ){
+function renderMetOutput( metImage = `https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG`, metArtistName, metCulture, metDate , metCountry , metTitle, objectURL ){
   metOutputResult.innerHTML =
-  `<div>
-  <img src="${metImage}" /> 
+  `<div class="metOutputDiv" >
+  <img src="${metImage}" class="rounded mx-auto d-block" onerror="this.onerror=null;this.src='./assets/images/image_not_available.jpg';"/> 
   <h2> Title - ${metTitle || "unknown title"}</h2> 
   <p> Artist Name - ${metArtistName || "unknown artist"}</p> 
   <p>Culture - ${metCulture || "unknown culture"} </p>
   <p>Date - ${metDate || "unknown date"} </p>
   <p>Country - ${metCountry || " unknown country "}</p>
+  <p><a href="${objectURL}"> More info </a> <p>
   </div>`
 }
 
