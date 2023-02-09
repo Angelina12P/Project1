@@ -7,7 +7,7 @@ function randomImage(){
   fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects")
   .then(response => response.json())
   .then(data => {
-    let art = data.objectIDs;
+    let art = data.objectIDs;  
     let randomArt = art[Math.floor(Math.random() * art.length)];
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomArt}`)
       .then(response => response.json())
@@ -22,13 +22,14 @@ function randomImage(){
         let metDate = artData.objectDate || "unknown date";
         let metCountry = artData.country || "unknown country";
         metOutputResult.innerHTML =
-       `<div>
-       <img src="${metImage}" /> 
+       `<div class="metOutputDiv">      
+       <img src="${metImage}" class="rounded mx-auto d-block" alt="" onerror="this.onerror=null;this.src='./assets/images/image_not_available.jpg';" /> 
        <h2> Title - ${metTitle}</h2> 
        <p> Artist Name - ${metArtistName}</p> 
        <p>Culture - ${metCulture} </p>
        <p>Date - ${metDate} </p>
        <p>Country - ${metCountry}</p>
+       <p><a href="${objectURL}"> More info </a> <p>
        </div>`
          
       
