@@ -79,7 +79,7 @@ console.log(queryTerm)
   let bookID = bookData.docs[0]?.isbn?.[1] || "None Found"
   // console.log(bookID)
 
-  let bookImage = `https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG`;
+  let bookImage = `./assets/images/no-book-cover-available.jpg`;
   if (bookID !== "None Found"){
     bookImage = `https://covers.openlibrary.org/b/olid/${bookID}-M.jpg?default=false`
   }
@@ -91,7 +91,7 @@ console.log(queryTerm)
 `<div class="bookOutputDiv">
 <h2> Title - ${bookTitle}</h2> 
 <p> Author - ${bookAuthor}</p>
-<img src="${bookImage}" class="rounded mx-auto d-block" onerror="this.onerror=null;this.src='https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG';"
+<img src="${bookImage}" class="rounded mx-auto d-block" onerror="this.onerror=null;this.src='./assets/images/no-book-cover-available.jpg';"
 </div>`;
 console.log(bookImage)
 })

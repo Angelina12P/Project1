@@ -51,11 +51,13 @@ header h1{
     -webkit-text-stroke-color: black;
     font-family: 'Eagle Lake', cursive;
     font-size: 80px;
+    padding: 10px;
     
 }
 
 header h3{
     font-style: italic;
+    padding: 10px;
 }
 
 .details{
@@ -111,12 +113,17 @@ header h3{
     margin-top: 20px;
 }
 
+.bookOutputDiv img{
+    height: 350px;
+    width: 350px;
+    
+}
 
 #bookOutput p{
     font-size: 25px;
     text-align: center;
     font-weight: 450;
-   
+    margin-top: 30px;
     font-style: italic;
     margin-bottom: 40px;
 }
@@ -129,9 +136,10 @@ header h3{
 }
 
 footer{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     width: 100%;
+    padding: 5px;
 }
 
 footer p{
