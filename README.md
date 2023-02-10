@@ -1,7 +1,7 @@
 # Project1 (unique name)
 
 ## Description 
-The design of this interactive webpage was based around art from different centuries using the MSI API and keys and based upon the choice of preference to find out more about it through a link that directed the user to a relevant book. 
+The design of this _interactive webpage_ was based around art from different centuries using the MSI API and keys and based upon the choice of preference to find out more about it through a link that directed the user to a relevant book. 
 
 This challenge required the construction of a webpage using our knowledge (learnt so far) of HTML, CSS, Vanilla Javascript and JSON commands. The use of API and API keys as the main focus of the website was employed. 
 
@@ -20,9 +20,9 @@ The major issues encountered during the construction and implementation of the w
 
 ## Technologies used
 
-* VS code v.!.75.1
+* VS code v.1.75.1
 * Bootstrap v.1.4.3.1
-* Excalidraw wireframing software
+* Sigma wireframing software
 * Youtube to obtain information for assisting in the design and successful syntax commands for the webpage
 * GitHub to create a repo for the webpage project and then individual user branches to permit coding with a view to merging into the main branch after review
 * Zoom virtual meeting rooms to discuss the project, type the coding syntax in realtime
