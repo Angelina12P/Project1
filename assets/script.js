@@ -70,7 +70,7 @@ console.log(queryTerm)
   if (!isThereData){
     bookOutput.innerHTML = "Hmm, no book data for this one, please try again" 
   }
-  let bookTitle = "None Found"
+  let bookTitle = "Book not found"
   if (bookData.docs[0]?.title ){
     bookTitle = bookData.docs[0].title
   }
