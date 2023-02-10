@@ -31,23 +31,6 @@ body {
     width: 2.5em;
 }
 
-.btn-outline-success {
-    --bs-btn-color: #530606;
-    --bs-btn-border-color: #530606;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #530606;
-    --bs-btn-hover-border-color: #530606;
-    --bs-btn-focus-shadow-rgb: 138, 63, 63;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #530606;
-    --bs-btn-active-border-color: #530606;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(138, 63, 63, 0.125);
-    --bs-btn-disabled-color: #530606;
-    --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: #530606;
-    --bs-gradient: none;
-}
-
 header,footer{
     text-align: center;
     background: rgb(228, 212, 212,0.6);
@@ -193,6 +176,3 @@ footer i{
     font-size:30px;
     color:rgb(54, 8, 8,0.6);
 }
-
-
-
