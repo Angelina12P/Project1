@@ -75,7 +75,7 @@ console.log(queryTerm)
     bookTitle = bookData.docs[0].title
   }
   console.log(bookTitle)
-  let bookAuthor = bookData.docs[0]?.author_name 
+  let bookAuthor = bookData.docs[0]?.author_name || "Unavailable"
   let bookID = bookData.docs[0]?.isbn?.[1] || "None Found"
   // console.log(bookID)
 
@@ -127,6 +127,12 @@ if (mode == 'light') {
   document.documentElement.classList.add("light")
 }
 
+//To reload the page
+
+let refreshBut = document.getElementById("refresh");
+refreshBut.addEventListener('click',function(){
+  window.location.reload();
+})
 
 // Then use these, and pick what we want to show from these 
 
