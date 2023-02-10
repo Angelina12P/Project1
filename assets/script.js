@@ -1,9 +1,3 @@
-// Start the met image random
-// onLoad check local storage for user preference object, then if object exists, use that, if not use default. 
-// light/dark mode checkbox. function writes change to local storage user setting = dark.light 
-
-// function that runs when page loads "init" - checks settings then calls function to startapp ()metCulture || metCountry || metArtistName || metDate || metTitle
-
 let metOutputResult = document.getElementById("metOutput");
 let searchButton = document.getElementById("searchButton");
 var metTitle = ""
@@ -13,6 +7,7 @@ var metDate = ""
 var metArtistName = ""
 var objectURL = ""
 
+//Function to get response from metmuseum api 
 function randomImage(){
   fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects")
   .then(response => response.json())
@@ -39,6 +34,7 @@ function randomImage(){
 
 randomImage()
 
+//Function to display the response from the metmuseum api
 function renderMetOutput( metImage = `https://suitabletech.com/images/HelpCenter/errors/Lenovo-Camera-Error.JPG`, metArtistName, metCulture, metDate , metCountry , metTitle, objectURL ){
   metOutputResult.innerHTML =
   `<div class="metOutputDiv" >
@@ -52,15 +48,13 @@ function renderMetOutput( metImage = `https://suitabletech.com/images/HelpCenter
   </div>`
 }
 
-
-
-
+//Button listener to fetch book details from openlibrary api based on the information from metmuseum api
 let button = document.getElementById('searchButton')
 button.addEventListener('click', function(){
-let  queryTerm = metCulture || metCountry || metArtistName || metDate || metTitle;
+  let  queryTerm = metCulture || metCountry || metArtistName || metDate || metTitle;
   // let metTitle = document.querySelector('#metOutputResult h2');
-console.log(metTitle)
-console.log(queryTerm)
+  console.log(metTitle)
+  console.log(queryTerm)
 
   fetch (`https://openlibrary.org/search.json?q=${queryTerm}`)
   .then (response => response.json())
@@ -75,7 +69,7 @@ console.log(queryTerm)
     bookTitle = bookData.docs[0].title
   }
   console.log(bookTitle)
-  let bookAuthor = bookData.docs[0]?.author_name 
+  let bookAuthor = bookData.docs[0]?.author_name || "Unavailable"
   let bookID = bookData.docs[0]?.isbn?.[1] || "None Found"
   // console.log(bookID)
 
@@ -83,20 +77,15 @@ console.log(queryTerm)
   if (bookID !== "None Found"){
     bookImage = `https://covers.openlibrary.org/b/olid/${bookID}-M.jpg?default=false`
   }
-
-  
-  
   
   bookOutput.innerHTML = 
-`<div class="bookOutputDiv">
-<h2> Title - ${bookTitle}</h2> 
-<p> Author - ${bookAuthor}</p>
-<img src="${bookImage}" class="rounded mx-auto d-block" onerror="this.onerror=null;this.src='./assets/images/no-book-cover-available.jpg';"
-</div>`;
-console.log(bookImage)
+    `<div class="bookOutputDiv">
+    <h2> Title - ${bookTitle}</h2> 
+    <p> Author - ${bookAuthor}</p>
+    <img src="${bookImage}" class="rounded mx-auto d-block" onerror="this.onerror=null;this.src='./assets/images/no-book-cover-available.jpg';"
+    </div>`;
+    console.log(bookImage)
 })
-
-
 })
 
 //For light and dark mode and storing the preference in local storage
@@ -127,37 +116,9 @@ if (mode == 'light') {
   document.documentElement.classList.add("light")
 }
 
+//To reload the page when reset button is clicked
 
-// Then use these, and pick what we want to show from these 
-
-// objectID ---> int Identifying number for each artwork (unique, can be used as key field)
-
-// objectData.objectEndDate; ---> whe it was made
-// Highlight         --->boolean When "true" indicates a popular and important artwork in the collection
-// isPublicDomain    --->boolean When "true" indicates an artwork in the Public Domain
-// department string --->Indicates The Met's curatorial department responsible for the artwork eg 'egyptian artwork'
-// objectName string --->Describes the physical type of the object
-// period            --->string  Time or time period when an object was created  "Ming dynasty (1368-1644)", "Middle Bronze Age"
-// portfolio         --->string  A set of works created as a group or published as a series. "Birds of America", "The Hudson River Portfolio", "Speculum Romanae Magnificentiae"
-// artistBeginDate   --->string  Year the artist was born  "1840"
-// artistEndDate     --->string  Year the artist died  "1926"
-// medium            --->string  Refers to the materials that were used to create the artwork  "Oil on canvas", "Watercolor", "Gold"
-// city              --->string  City where the artwork was created  "New York", "Paris", "Tokyo"
-// tags              --->array An array of subject keyword tags associated with the object and their respective AAT URL  [{"term": "Abstraction","AAT_URL": "http://vocab.getty.edu/page/aat/300056508","Wikidata_URL": "https://www.wikidata.org/wiki/Q162150"}]
-// objectWikidata_URL --->string  Wikidata URL for the object "https://www.wikidata.org/wiki/Q432253"
-// artistWikidata_URL --->string  Wikidata URL for the artist "https://www.wikidata.org/wiki/Q694774"
-
-
-
-// Then add to the container bit 
-// <plus other bits we want>
-
-// Then call it 
-
-// Then button event listener to go to next api 
-
-// Then give it something we pick from above onClick/enter button? Which then gives book/(s?)
-
-// Then attach the result to the book bit 
-
-// Need book params we want 
+let refreshBut = document.getElementById("refresh");
+refreshBut.addEventListener('click',function(){
+  window.location.reload();
+})
